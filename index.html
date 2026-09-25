@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="輸入每包抽數、包數與總價，立即算出衛生紙每一抽多少錢，還能比較多個組合找出最划算的。">
+  <meta name="theme-color" content="#f7f3ee" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1b1a19" media="(prefers-color-scheme: dark)">
+  <title>衛生紙每抽價格計算機</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧻</text></svg>">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1><span aria-hidden="true">🧻</span> 衛生紙每抽價格計算機</h1>
+    <p class="lead">輸入每包抽數、包數與組合價格，馬上知道一抽多少錢。多加幾組就能比較哪個最划算。</p>
+  </header>
+
+  <main>
+    <section id="cards" class="cards" aria-live="polite"></section>
+
+    <div class="actions">
+      <button type="button" id="add" class="btn btn-primary">＋ 新增比較組合</button>
+      <button type="button" id="reset" class="btn btn-ghost">全部清除</button>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>資料只存在你的瀏覽器中，不會上傳。</p>
+  </footer>
+
+  <template id="card-template">
+    <article class="card">
+      <div class="card-head">
+        <input class="name" type="text" maxlength="40" autocomplete="off" aria-label="組合名稱">
+        <button type="button" class="remove" aria-label="刪除此組合" title="刪除此組合">✕</button>
+      </div>
+
+      <div class="fields">
+        <label class="field">
+          <span class="field-label">每包抽數</span>
+          <span class="input-wrap">
+            <input data-key="sheetsPerPack" type="text" inputmode="numeric" placeholder="例如 100" autocomplete="off">
+            <span class="unit">抽</span>
+          </span>
+        </label>
+        <label class="field">
+          <span class="field-label">包數</span>
+          <span class="input-wrap">
+            <input data-key="packs" type="text" inputmode="numeric" placeholder="例如 12" autocomplete="off">
+            <span class="unit">包</span>
+          </span>
+        </label>
+        <label class="field">
+          <span class="field-label">組合總價</span>
+          <span class="input-wrap">
+            <span class="unit unit-prefix">$</span>
+            <input data-key="price" type="text" inputmode="decimal" placeholder="例如 199" autocomplete="off">
+            <span class="unit">元</span>
+          </span>
+        </label>
+      </div>
+
+      <div class="result">
+        <p class="result-hint">填完三個欄位就會顯示結果</p>
+        <div class="result-body" hidden>
+          <div class="result-main">
+            <span class="result-label">每抽</span>
+            <output class="per-sheet">0</output>
+            <span class="result-unit">元</span>
+            <span class="badge" hidden></span>
+          </div>
+          <dl class="result-detail">
+            <div><dt>每 100 抽</dt><dd class="per-hundred"></dd></div>
+            <div><dt>每包</dt><dd class="per-pack"></dd></div>
+            <div><dt>總抽數</dt><dd class="total-sheets"></dd></div>
+          </dl>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <script src="calc.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
