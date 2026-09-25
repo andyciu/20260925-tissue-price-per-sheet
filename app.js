@@ -178,4 +178,11 @@
   });
 
   render();
+
+  // 註冊 service worker，讓 App 可以安裝並離線使用（file:// 開啟時不支援，直接略過）
+  if ('serviceWorker' in navigator && window.isSecureContext) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('sw.js').catch(function () { /* 註冊失敗不影響計算功能 */ });
+    });
+  }
 })();

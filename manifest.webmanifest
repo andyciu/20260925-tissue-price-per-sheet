@@ -1,10 +1,24 @@
 {
+  "id": "./",
   "name": "衛生紙每抽價格計算機",
   "short_name": "每抽價格",
+  "description": "輸入每包抽數、包數與總價，算出衛生紙每一抽多少錢，並比較哪個組合最划算。",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "background_color": "#f7f3ee",
   "theme_color": "#f7f3ee",
-  "lang": "zh-Hant-TW"
+  "lang": "zh-Hant-TW",
+  "dir": "ltr",
+  "categories": ["utilities", "shopping"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ],
+  "screenshots": [
+    { "src": "screenshots/mobile.png", "sizes": "780x1688", "type": "image/png", "form_factor": "narrow", "label": "手機上比較三個衛生紙組合的每抽價格" },
+    { "src": "screenshots/desktop.png", "sizes": "1280x800", "type": "image/png", "form_factor": "wide", "label": "桌機上並排比較多個組合" }
+  ]
 }
