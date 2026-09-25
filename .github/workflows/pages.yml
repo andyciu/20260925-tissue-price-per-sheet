@@ -35,7 +35,11 @@ jobs:
       - name: Collect site files
         run: |
           mkdir _site
-          cp index.html style.css app.js calc.js manifest.webmanifest .nojekyll _site/
+          cp index.html style.css app.js calc.js sw.js manifest.webmanifest .nojekyll _site/
+          cp -r icons screenshots _site/
+          # 每次部署換一個快取名稱，讓已安裝的 App 更新到新版
+          sed -i "s/__BUILD__/${GITHUB_SHA::12}/" _site/sw.js
+          grep -q "tissue-price-${GITHUB_SHA::12}" _site/sw.js
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
